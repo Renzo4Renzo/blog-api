@@ -1,0 +1,14 @@
+# Angular Project
+/angular
+
+#Base Assets
+/assets
+
+#Base HTML
+article.html
+blog.html
+form.html
+index.html
+
+#Node Modules
+**/node_modules
