@@ -1,7 +1,7 @@
 "use strict";
 
 let mongoose = require("mongoose");
-let connectionURL = "mongodb://localhost:27017/blog";
+let connectionURL = "mongodb://localhost:27017/blog-db";
 let app = require("./app");
 let appPort = 4400;
 

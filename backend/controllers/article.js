@@ -209,7 +209,8 @@ let articleController = {
     }
 
     let filePath = request.files.file0.path;
-    let filePathSplit = filePath.split("\\");
+    console.log("File Path: " + filePath);
+    let filePathSplit = filePath.split("/");
     let fileName = filePathSplit[3];
     let fileExtensionSplit = fileName.split(".");
     let fileExtension = fileExtensionSplit[1];
