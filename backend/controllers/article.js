@@ -282,7 +282,7 @@ let articleController = {
   },
   searchArticle: (request, response) => {
     //Sacar el string a buscar
-    let searchString = request.params.search;
+    let searchString = request.params.searchString;
     //Find or
     Article.find({
       $or: [{ title: { $regex: searchString, $options: "i" } }, { content: { $regex: searchString, $options: "i" } }],
