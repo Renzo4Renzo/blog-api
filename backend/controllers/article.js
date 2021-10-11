@@ -4,6 +4,7 @@ let validator = require("validator");
 let fileSystem = require("fs");
 let path = require("path");
 var Article = require("../models/article");
+const article = require("../models/article");
 
 let articleController = {
   saveArticle: (request, response) => {
@@ -29,7 +30,9 @@ let articleController = {
       //Asignar valores
       currentArticle.title = parameters.title;
       currentArticle.content = parameters.content;
-      currentArticle.image = null;
+
+      if (parameters.image) currentArticle.image = parameters.image;
+      else currentArticle.image = null;
 
       //Guardar el artículo
       currentArticle.save((error, articleStored) => {
@@ -232,36 +235,43 @@ let articleController = {
       });
     } else {
       let articleID = request.params.id;
-      Article.findOneAndUpdate({ _id: articleID }, { image: fileName }, { new: true }, (error, articleUpdated) => {
-        //console.log("Error: " + error);
-        if (error) {
-          if (error.name == "MongooseServerSelectionError") {
-            fileSystem.unlink(filePath, (error) => {});
-            return response.status(500).send({
-              status: "Error",
-              message: "¡No se pudo conectar con la base de datos!",
-            });
+
+      if (articleID) {
+        Article.findOneAndUpdate({ _id: articleID }, { image: fileName }, { new: true }, (error, articleUpdated) => {
+          if (error) {
+            if (error.name == "MongooseServerSelectionError") {
+              fileSystem.unlink(filePath, (error) => {});
+              return response.status(500).send({
+                status: "Error",
+                message: "¡No se pudo conectar con la base de datos!",
+              });
+            }
+            if (error.name == "CastError") {
+              fileSystem.unlink(filePath, (error) => {});
+              return response.status(404).send({
+                status: "Error",
+                message: "¡No existe ningún artículo con este ID!",
+              });
+            }
           }
-          if (error.name == "CastError") {
+          if (articleUpdated == null) {
             fileSystem.unlink(filePath, (error) => {});
             return response.status(404).send({
               status: "Error",
               message: "¡No existe ningún artículo con este ID!",
             });
           }
-        }
-        if (articleUpdated == null) {
-          fileSystem.unlink(filePath, (error) => {});
-          return response.status(404).send({
-            status: "Error",
-            message: "¡No existe ningún artículo con este ID!",
+          return response.status(200).send({
+            status: "Ok",
+            article: articleUpdated,
           });
-        }
+        });
+      } else {
         return response.status(200).send({
           status: "Ok",
-          article: articleUpdated,
+          image: fileName,
         });
-      });
+      }
     }
   },
   getArticleImg: (request, response) => {

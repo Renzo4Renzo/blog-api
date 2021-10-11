@@ -14,7 +14,7 @@ articleRouter.get("/article_list/:last_five?", articleController.getArticles);
 articleRouter.get("/article/:id", articleController.getArticle);
 articleRouter.put("/article_update/:id", articleController.updateArticle);
 articleRouter.delete("/article_delete/:id", articleController.deleteArticle);
-articleRouter.post("/article_img_upload/:id", middlewareUpload, articleController.uploadArticleImg);
+articleRouter.post("/article_img_upload/:id?", middlewareUpload, articleController.uploadArticleImg);
 articleRouter.get("/article_img/:img", articleController.getArticleImg);
 articleRouter.get("/article_search/:searchString", articleController.searchArticle);
 
