@@ -11,12 +11,14 @@ let articleController = {
     //Recoger parámetros por POST
     let parameters = request.body;
     console.log(parameters);
+    let filePath = "upload/images/article/" + parameters.image;
 
     //Validar datos (validator)
     try {
       var titleValid = !validator.isEmpty(parameters.title);
       var contentValid = !validator.isEmpty(parameters.content);
     } catch (error) {
+      fileSystem.unlink(filePath, (error) => {});
       return response.status(400).send({
         status: "Error",
         message: "¡No se enviaron todos los campos requeridos!",
@@ -38,6 +40,7 @@ let articleController = {
       currentArticle.save((error, articleStored) => {
         //console.log("Error: " + error);
         if (error && error.name == "MongooseServerSelectionError") {
+          fileSystem.unlink(filePath, (error) => {});
           return response.status(500).send({
             status: "Error",
             message: "¡No se pudo conectar con la base de datos!",
@@ -50,6 +53,7 @@ let articleController = {
         });
       });
     } else {
+      fileSystem.unlink(filePath, (error) => {});
       return response.status(400).send({
         status: "Error",
         message: "¡La data enviada no es válida!",
@@ -197,6 +201,8 @@ let articleController = {
           message: "¡No existe ningún artículo con este ID!",
         });
       }
+      let filePath = "upload/images/article/" + articleRemoved.image;
+      fileSystem.unlink(filePath, (error) => {});
       return response.status(200).send({
         status: "Ok",
         article: articleRemoved,
@@ -204,10 +210,12 @@ let articleController = {
     });
   },
   uploadArticleImg: (request, response) => {
+    var firstFile = Object.keys(request.files)[0];
     if (request.files.file0 == undefined) {
+      fileSystem.unlink(request.files[firstFile].path, (error) => {});
       return response.status(500).send({
         status: "Error",
-        message: "¡No se enviaron todos los campos requeridos!",
+        message: "¡Los campos no son válidos! ¡La imagen solo se puede enviar mediante el campo file0!",
       });
     }
 
@@ -226,12 +234,20 @@ let articleController = {
       });
     }
 
+    let fileSizeMb = request.files.file0.size / (1024 * 1024);
+    if (fileSizeMb > 1) {
+      fileSystem.unlink(filePath, (error) => {});
+      return response.status(500).send({
+        status: "Error",
+        message: "¡El peso máximo permitido de los archivos es de 1MB!",
+      });
+    }
+
     if (fileExtension != "png" && fileExtension != "jpg" && fileExtension != "jpeg" && fileExtension != "gif") {
-      fileSystem.unlink(filePath, (error) => {
-        return response.status(500).send({
-          status: "Error",
-          message: "¡La extensión de la imagen no es válida!",
-        });
+      fileSystem.unlink(filePath, (error) => {});
+      return response.status(500).send({
+        status: "Error",
+        message: "¡La extensión de la imagen no es válida!\nLas extensiones válidas son: .png, .jpg, .jpeg, .gif",
       });
     } else {
       let articleID = request.params.id;
