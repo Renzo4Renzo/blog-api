@@ -4,7 +4,7 @@ let validator = require("validator");
 let fileSystem = require("fs");
 let path = require("path");
 var Article = require("../models/article");
-const article = require("../models/article");
+/* const article = require("../models/article"); */
 
 let articleController = {
   saveArticle: (request, response) => {
@@ -34,7 +34,7 @@ let articleController = {
       currentArticle.content = parameters.content;
 
       if (parameters.image) currentArticle.image = parameters.image;
-      else currentArticle.image = null;
+      else currentArticle.image = "";
 
       //Guardar el artículo
       currentArticle.save((error, articleStored) => {
@@ -295,7 +295,6 @@ let articleController = {
     let imgPath = "./upload/images/article/" + img;
 
     fileSystem.stat(imgPath, (error, stats) => {
-      //console.log("Error: " + error.toString());
       if (error && error.toString().includes("no such file or directory")) {
         return response.status(404).send({
           status: "Error",
@@ -303,6 +302,25 @@ let articleController = {
         });
       } else {
         return response.sendFile(path.resolve(imgPath));
+      }
+    });
+  },
+  deleteArticleImg: (request, response) => {
+    let img = request.params.img;
+    let imgPath = "./upload/images/article/" + img;
+
+    fileSystem.stat(imgPath, (error, stats) => {
+      if (error && error.toString().includes("no such file or directory")) {
+        return response.status(404).send({
+          status: "Error",
+          message: "¡No se encontró la imagen!",
+        });
+      } else {
+        fileSystem.unlink(imgPath, (error) => {});
+        return response.status(200).send({
+          status: "Ok",
+          message: "¡Imagen eliminada!",
+        });
       }
     });
   },

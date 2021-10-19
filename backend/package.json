@@ -13,10 +13,14 @@
     "body-parser": "^1.19.0",
     "connect-multiparty": "^2.2.0",
     "express": "^4.17.1",
+    "googleapis": "^89.0.0",
     "mongoose": "^5.13.7",
+    "nodemailer": "^6.7.0",
+    "styliner": "^1.1.0",
     "validator": "^13.6.0"
   },
   "devDependencies": {
+    "mjml-utils": "^2.2.1",
     "nodemon": "^2.0.12"
   }
 }

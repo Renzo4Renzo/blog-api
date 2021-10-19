@@ -1,0 +1,80 @@
+<mjml>
+  <mj-head>
+    <mj-font
+      name="Work Sans"
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    />
+    <mj-attributes>
+      <mj-text font-family="Work Sans, sans-serif" align="justify" font-size="16px" padding="0px" />
+      <mj-section padding="0px" />
+      <mj-image padding="0px" />
+      <mj-all padding="0px" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#FFFFFF">
+    <!--Header Section-->
+    <mj-section background-color="#F6A819">
+      <mj-column width="100%" padding-top="15px" padding-bottom="15px">
+        <mj-image
+          src="../images/squish.png"
+          href="https://genshin-impact.fandom.com/es/wiki/Ganyu"
+          width="140px"
+          alt="Squish"
+        />
+      </mj-column>
+    </mj-section>
+
+    <!--Content Section-->
+    <mj-section border-left="2px solid #FBC635" border-right="2px solid #FBC635">
+      <mj-column width="100%" padding-top="15px" padding-bottom="15px">
+        <mj-text padding="20px"> {greeting} <b>{name}</b>: </mj-text>
+        <mj-text padding-top="10px" padding-left="20px" padding-right="20px">
+          A través de nuestra página web, nos hiciste la siguiente pregunta:
+        </mj-text>
+        <mj-text padding-top="10px" padding-left="20px" padding-right="20px" padding-bottom="20px">
+          <b>{question}</b>
+        </mj-text>
+        <mj-image
+          src="https://iveybusinessjournal.com/wp-content/uploads/2016/01/iStock_000076498599_crop.jpg"
+          width="1000px"
+          alt="Logo"
+          padding-left="20px"
+          padding-right="20px"
+        />
+        <mj-text padding-top="20px" padding-left="20px" padding-right="20px">
+          Luego de coordinar y meditar meticulosamente las posibilidades, decidimos que la respuesta más apropiada es:
+        </mj-text>
+        <mj-text padding-top="10px" padding-left="20px" padding-right="20px" padding-bottom="10px">
+          <b>{answer}</b>
+        </mj-text>
+        <mj-text padding-top="20px" padding-left="20px" padding-right="20px"> Atentamente, </mj-text>
+        <mj-text padding-top="5px" padding-bottom="20px" padding-left="20px" padding-right="20px">
+          El equipo de Squish Company.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!--Footer Section-->
+    <mj-section background-color="#F6A819">
+      <mj-column>
+        <mj-text padding-top="20px" align="center" font-family="Bootstrap Icons">
+          <a href="https://genshin-impact.fandom.com/es/wiki/Ganyu" style="text-decoration: none">
+            <img src="../images/facebook.png" width="24px" style="padding: 5px" alt="facebook" />
+          </a>
+          <a href="https://genshin-impact.fandom.com/es/wiki/Ganyu" style="text-decoration: none">
+            <img src="../images/instagram.png" width="24px" style="padding: 5px" alt="instagram" />
+          </a>
+          <a href="https://genshin-impact.fandom.com/es/wiki/Ganyu" style="text-decoration: none">
+            <img src="../images/twitter.png" width="24px" style="padding: 5px" alt="twitter" />
+          </a>
+          <a href="https://genshin-impact.fandom.com/es/wiki/Ganyu" style="text-decoration: none">
+            <img src="../images/youtube.png" width="24px" style="padding: 5px" alt="youtube" />
+          </a>
+        </mj-text>
+        <mj-text font-size="14px" align="center" padding-top="10px" padding-bottom="20px">
+          &copy; The Squish Company 2021
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

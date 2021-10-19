@@ -16,6 +16,7 @@ articleRouter.put("/article_update/:id", articleController.updateArticle);
 articleRouter.delete("/article_delete/:id", articleController.deleteArticle);
 articleRouter.post("/article_img_upload/:id?", middlewareUpload, articleController.uploadArticleImg);
 articleRouter.get("/article_img/:img", articleController.getArticleImg);
+articleRouter.delete("/article_img_delete/:img", articleController.deleteArticleImg);
 articleRouter.get("/article_search/:searchString", articleController.searchArticle);
 
 module.exports = articleRouter;

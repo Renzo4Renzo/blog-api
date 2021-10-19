@@ -2,13 +2,14 @@
 
 // Cargar módulos de Node para crear servidor
 let express = require("express");
-//let bodyParser = require("body-parser");
+let bodyParser = require("body-parser");
 
 // Ejecutar express (HTTP)
 let app = express();
 
 // Cargar Ficheros Rutas
 let articleRoutes = require("./routes/article");
+let formRoutes = require("./routes/form");
 
 // Middlewares
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,7 @@ app.use((request, response, next) => {
 
 // Añadir prefijos a rutas / Cargar Rutas
 app.use("/api", articleRoutes);
+app.use("/api", formRoutes);
 
 // Exportar módulo (fichero actual)
 module.exports = app;
