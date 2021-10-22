@@ -3,6 +3,7 @@
 // Cargar módulos de Node para crear servidor
 let express = require("express");
 let bodyParser = require("body-parser");
+let cors = require("cors");
 
 // Ejecutar express (HTTP)
 let app = express();
@@ -16,7 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // CORS
-app.use((request, response, next) => {
+app.use(cors());
+/* app.use((request, response, next) => {
   response.header("Access-Control-Allow-Origin", "*");
   response.header(
     "Access-Control-Allow-Headers",
@@ -25,7 +27,7 @@ app.use((request, response, next) => {
   response.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   response.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
   next();
-});
+}); */
 
 // Añadir prefijos a rutas / Cargar Rutas
 app.use("/api", articleRoutes);
