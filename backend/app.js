@@ -17,7 +17,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // CORS
-app.use(cors());
+var corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders:
+    "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method",
+  credentials: true,
+  preflightContinue: false,
+  maxAge: 600,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+
 /* app.use((request, response, next) => {
   response.header("Access-Control-Allow-Origin", "*");
   response.header(
