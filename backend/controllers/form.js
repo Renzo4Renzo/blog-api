@@ -7,6 +7,7 @@ const mjmlUtils = require("mjml-utils");
 const emailTemplatePath = path.join(__dirname, "../assets/emails/contact-email.html");
 
 const { emailConfig, oAuth2Client } = require("../config/email");
+const globalConfig = require("../config/global");
 
 let formController = {
   sendContactEmail: (request, response) => {
@@ -106,6 +107,7 @@ let formController = {
           greeting: greetingText,
           question: questionText,
           answer: answerText,
+          path: globalConfig.BASE_URL_IMG,
         })
         .then((emailTemplate) => {
           doSending(
