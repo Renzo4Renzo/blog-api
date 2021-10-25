@@ -3,6 +3,7 @@ const { google } = require("googleapis");
 
 const emailConfig = {
   USER: "darkboxper@gmail.com",
+  PASSWORD: "darboxper1996",
   CLIENT_ID: "369164485640-01ip963rhd8mrolasda3lqm8v0tfutlq.apps.googleusercontent.com",
   CLIENT_SECRET: "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",
   REDIRECT_URI: "https://developers.google.com/oauthplayground",

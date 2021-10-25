@@ -155,9 +155,13 @@ async function doSending(emailTemplate, emailData, callbackOk, callbackError) {
   try {
     let accessToken = await oAuth2Client.getAccessToken();
     let transporter = nodemailer.createTransport({
-      /* host: "smtp.gmail.com",
+      host: "smtp.gmail.com",
       port: 465,
-      secure: true, // true for 465, false for other ports like 587 */
+      secure: true, // true for 465, false for other ports like 587
+      /* auth: {
+        user: emailConfig.USER,
+        pass: emailConfig.PASSWORD,
+      }, */
       service: "gmail",
       auth: {
         type: "OAuth2",

@@ -11,6 +11,7 @@ let app = express();
 // Cargar Ficheros Rutas
 let articleRoutes = require("./routes/article");
 let formRoutes = require("./routes/form");
+let assetRoutes = require("./routes/asset");
 
 // Middlewares
 app.use(express.urlencoded({ extended: false }));
@@ -44,6 +45,7 @@ app.use(cors(corsOptions));
 // Añadir prefijos a rutas / Cargar Rutas
 app.use("/api", articleRoutes);
 app.use("/api", formRoutes);
+app.use("/api", assetRoutes);
 
 // Exportar módulo (fichero actual)
 module.exports = app;
