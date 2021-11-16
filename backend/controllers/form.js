@@ -6,8 +6,12 @@ const mjmlUtils = require("mjml-utils");
 
 const emailTemplatePath = path.join(__dirname, "../assets/emails/contact-email.html");
 
-const { emailConfig, oAuth2Client } = require("../config/email");
+const { emailConfig } = require("../config/email");
 const globalConfig = require("../config/global");
+
+const { google } = require("googleapis");
+const oAuth2Client = new google.auth.OAuth2(emailConfig.CLIENT_ID, emailConfig.CLIENT_SECRET, emailConfig.REDIRECT_URI);
+oAuth2Client.setCredentials({ refresh_token: emailConfig.REFRESH_TOKEN });
 
 let formController = {
   sendContactEmail: (request, response) => {
@@ -157,9 +161,9 @@ async function doSending(emailTemplate, emailData, callbackOk, callbackError) {
   try {
     let accessToken = await oAuth2Client.getAccessToken();
     let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
+      /* host: "smtp.gmail.com",
       port: 465,
-      secure: true, // true for 465, false for other ports like 587
+      secure: true, */ // true for 465, false for other ports like 587
       /* auth: {
         user: emailConfig.USER,
         pass: emailConfig.PASSWORD,
