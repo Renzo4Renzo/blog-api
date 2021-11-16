@@ -71,7 +71,7 @@ let formController = {
           greetingText = "Estimada";
           break;
         case "other":
-          greetingText = "Estimedex";
+          greetingText = "Hola";
           break;
       }
 
@@ -79,20 +79,23 @@ let formController = {
       let answerText;
       switch (contactData.question) {
         case "1":
-          questionText = "¿Te salió la Raiden Shogun?";
-          answerText = "Sí, aunque por alguna extraña razón es de tipo Anemo.";
+          questionText = "¿Qué requisitos necesito para escribir artículos?";
+          answerText =
+            "No te preocupes, no buscamos escritores profesionales. Estaremos felices de publicar tus artículos siempre que demuestres pasión por el tema que escribes.";
           break;
         case "2":
-          questionText = "¿Te gustan las canciones del Faraón Love Shady?";
-          answerText = "¡Claro que sí, OHHH ME BINGOO oyendo Harley Quinn!";
+          questionText = "¿De qué temas puedo escribir artículos?";
+          answerText =
+            "No hay restricción de temas, siempre que presentes tus puntos de vista con respeto y estos no busquen denigrar a nadie.";
           break;
         case "3":
-          questionText = "¿Ganaste un auto con un mes de trading?";
-          answerText = "Tras un mes de trading, me compré 17 autos de lujo y 6 mansiones, pronto te los enseñaré.";
+          questionText = "¿Cúanto tiempo debo esperar para que aprueben mi artículo?";
+          answerText =
+            "Tu artículo se publicará de inmediato. Sin embargo, si algún moderador detecta que este no es apropiado, procederá a eliminarlo.";
           break;
         case "4":
-          questionText = "¿Cuántos bitcoins costaría el cumpleaños de Aliasandria?";
-          answerText = "¡Aproximadamente 0,0023 bitcoins, así que aprovecha y celébralo!";
+          questionText = "¿Cuántos artículos puedo publicar?";
+          answerText = "¡No hay límite, así que aprovecha y crea tantos como puedas!";
           break;
       }
 

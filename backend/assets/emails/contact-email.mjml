@@ -15,12 +15,7 @@
     <!--Header Section-->
     <mj-section background-color="#F6A819">
       <mj-column width="100%" padding-top="15px" padding-bottom="15px">
-        <mj-image
-          src="{path}squish.png"
-          href="https://genshin-impact.fandom.com/es/wiki/Ganyu"
-          width="140px"
-          alt="Squish"
-        />
+        <mj-image src="{path}squish.png" href="https://www.squishblog.sbs" width="140px" alt="Squish" />
       </mj-column>
     </mj-section>
 
@@ -58,16 +53,16 @@
     <mj-section background-color="#F6A819">
       <mj-column>
         <mj-text padding-top="20px" align="center" font-family="Bootstrap Icons">
-          <a href="https://genshin-impact.fandom.com/es/wiki/Ganyu" style="text-decoration: none">
+          <a href="https://www.squishblog.sbs" style="text-decoration: none">
             <img src="{path}facebook.png" width="24px" style="padding: 5px" alt="facebook" />
           </a>
-          <a href="https://genshin-impact.fandom.com/es/wiki/Ganyu" style="text-decoration: none">
+          <a href="https://www.squishblog.sbs" style="text-decoration: none">
             <img src="{path}instagram.png" width="24px" style="padding: 5px" alt="instagram" />
           </a>
-          <a href="https://genshin-impact.fandom.com/es/wiki/Ganyu" style="text-decoration: none">
+          <a href="https://www.squishblog.sbs" style="text-decoration: none">
             <img src="{path}twitter.png" width="24px" style="padding: 5px" alt="twitter" />
           </a>
-          <a href="https://genshin-impact.fandom.com/es/wiki/Ganyu" style="text-decoration: none">
+          <a href="https://www.squishblog.sbs" style="text-decoration: none">
             <img src="{path}youtube.png" width="24px" style="padding: 5px" alt="youtube" />
           </a>
         </mj-text>
